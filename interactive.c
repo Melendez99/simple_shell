@@ -46,8 +46,9 @@ int is_alpha_character(int c)
 int string_to_integer(char *str) 
 {
     int sign = 1, result = 0, output = 0;
+    int i;
 
-    for (int i = 0; str[i] != '\0'; i++) 
+    for (i = 0; str[i] != '\0'; i++) 
     {	
         if (str[i] == '-')
             sign *= -1;
@@ -58,6 +59,5 @@ int string_to_integer(char *str)
         } else
             break;
  	}
-
-    return output;
+	return (output);
 }

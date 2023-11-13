@@ -8,18 +8,21 @@
  */
 char **split_string_ignore_repeat_delim(char *inputStr, char *delimiters)
 {
+	int i = 0, j = 0, k = 0, m = 0;
+    	int numWords = 0;
+    	char **resultWords;
+
     if (inputStr == NULL || inputStr[0] == '\0')
         return NULL;
 
     if (!delimiters)
         delimiters = " ";
 
-    int i, j, k, m, numWords = 0;
-    char **resultWords;
-
     for (i = 0; inputStr[i] != '\0'; i++)
+    {
         if (!is_delim(inputStr[i], delimiters) && (is_delim(inputStr[i + 1], delimiters) || !inputStr[i + 1]))
             numWords++;
+    }
 
     if (numWords == 0)
         return NULL;
@@ -62,12 +65,13 @@ char **split_string_ignore_repeat_delim(char *inputStr, char *delimiters)
  * Return: A pointer to an array of strings, or NULL on failure.
  */
 char **split_string_by_delim(char *inputStr, char delimiter)
-{
+{ 	
+	int i = 0, j = 0, k = 0, m = 0;
+	int numWords = 0;
+	char **resultWords;
+
     if (inputStr == NULL || inputStr[0] == '\0')
         return NULL;
-
-    int i, j, k, m, numWords = 0;
-    char **resultWords;
 
     for (i = 0; inputStr[i] != '\0'; i++)
         if ((inputStr[i] != delimiter && inputStr[i + 1] == delimiter) ||
