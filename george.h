@@ -35,4 +35,16 @@ int string_to_integer(char *str);
 char **split_string_by_delim(char *inputStr, char delimiter);
 char **split_string_ignore_repeat_delim(char *inputStr, char *delimiters);
 
+/* builtinfunctions */
+int exit_shell(info_t *shell_info);
+int change_directory(info_t *shell_info);
+int display_help(info_t *shell_info);
+
+/* env.c */
+int display_environment(info_t *info);
+char *get_env_value(info_t *info, const char *name);
+int set_environment_variable(info_t *info);
+int unset_environment_variable(info_t *info);
+int populate_environment_list(info_t *info);
+
 #endif /* GEORGE_h */
