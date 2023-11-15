@@ -47,4 +47,39 @@ int set_environment_variable(info_t *info);
 int unset_environment_variable(info_t *info);
 int populate_environment_list(info_t *info);
 
+/* loop.c */
+int shellLoop(info_t *shellInfo, char **arguments);
+int find_builtin(info_t *shellInfo);
+void find_command(info_t *shellInfo);
+void fork_command(info_t *shellInfo);
+
+/* main_shell.c */
+int main(int arg_count, char **arg_vector);
+
+/* newline.c */
+void sigintHandler(int sig_num);
+ssize_t get_input(info_t *info);
+ssize_t read_buf(info_t *info, char *buf, size_t *i);
+int main(void);
+
+/*shellmemory.c */
+int freeAndNull(void **pointer);
+
+/* varaible.c */
+int is_command_delimiter(info_t *info, char *buffer, size_t *position);
+void check_continue_chain(info_t *info, char *buffer, size_t *position, size_t start, size_t length);
+int replace_alias(info_t *info);
+int replace_variables(info_t *info);
+int replace_str(char **old_string, char *new_string);
+
+/* path.c */
+int is_executable(info_t *info, char *file_path);
+char *copy_characters(char *src_string, int start_idx, int end_idx);
+char *find_cmd_path(info_t *info, char *path_str, char *command);
+
+/* environ.c */
+char **get_environ(info_t *info);
+int _unsetenv(info_t *info, char *var);
+int _setenv(info_t *info, char *var, char *value);
+
 #endif /* GEORGE_h */
